@@ -5,7 +5,9 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#ffffff"
     tools:context=".MainActivity">
+
 
 <!---This part of code is for the question. -->
     <TextView
@@ -15,7 +17,9 @@
         android:gravity="center"
         android:text="Who is the 44th President of the United States?"
         android:textSize="40sp"
-        android:textColor="#214f96"/>
+        android:textColor="#214f96"
+        android:background="@drawable/card_background"
+        android:elevation="5dp"/>
 
     <!--- This part of code is for the answer. -->
     <TextView

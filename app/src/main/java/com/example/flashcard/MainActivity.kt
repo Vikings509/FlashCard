@@ -19,6 +19,10 @@ class MainActivity : AppCompatActivity() {
             flashcardQuestion.visibility = View.INVISIBLE
             flashcardAnswer.visibility = View.VISIBLE
         }
+        flashcardAnswer.setOnClickListener {
+            flashcardQuestion.visibility = View.VISIBLE
+            flashcardAnswer.visibility = View.INVISIBLE
+        }
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
