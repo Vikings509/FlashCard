@@ -6,74 +6,78 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#ffffff"
+    android:theme="@android:style/Theme.Black.NoTitleBar"
     tools:context=".MainActivity">
-
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/main"
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="5dp"
+        android:layout_marginRight="10dp"
+        android:text="Flash Card App"
+        android:textColor="#ffffff"
+        android:textSize="20sp"/>
 <!---This part of code is for the question. -->
     <TextView
-        android:id="@+id/flashcard_question"
+        android:id="@+id/flashcard_question1"
+        android:layout_below="@+id/button1"
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:gravity="center"
         android:text="Who is the 44th President of the United States?"
         android:textSize="40sp"
-        android:textColor="#214f96"
+        android:textColor="#4C4D4F"
+        android:padding="3dp"
         android:background="@drawable/card_background"
-        android:elevation="5dp"/>
+        android:elevation="50dp"
+        android:layout_marginBottom="20dp"/>
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/flashcard_question">
-    </RelativeLayout>
     <!--- This part of code is for the answer. -->
     <TextView
-        android:id="@+id/flashcard_answer"
+        android:id="@+id/flashcard_answer1"
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:gravity="center"
         android:text="Barack Obama"
         android:textSize="40sp"
-        android:textColor="#6baf26"
+        android:textColor="#4C4D4F"
         android:background="#EDED6B"
         android:visibility="invisible"/>
 
-    <RelativeLayout
+    <TextView
+        android:id="@+id/flashcard_q1_choice1"
+        android:layout_below="@+id/flashcard_question1"
+        android:layout_marginTop="30dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/flashcard_question">
-
-        <TextView
-            android:id="@+id/label"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Bill Clinton"
-            android:textAlignment="center"
-            android:textSize="40sp"
-            android:textColor="#214f96"/>
-
-        <TextView
-            android:id="@+id/label2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/label"
-            android:layout_marginTop="1dp"
-            android:text="George H. W. Bush"
-            android:textAlignment="center"
-            android:textSize="40sp"
-            android:textColor="#214f96" />
-
-        <TextView
-            android:id="@+id/label3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/label2"
-            android:layout_marginTop="0dp"
-            android:text="Barack Obama"
-            android:textAlignment="center"
-            android:textSize="40sp"
-            android:textColor="#214f96"/>
-
-    </RelativeLayout>
+        android:gravity="center"
+        android:text="Bill Clinton"
+        android:textSize="40sp"
+        android:textColor="#3737D3"
+        android:background="#FED9B7"/>
+    <TextView
+        android:id="@+id/flashcard_q1_choice2"
+        android:layout_below="@+id/flashcard_q1_choice1"
+        android:layout_marginTop="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="George H. W. Bush"
+        android:textSize="40sp"
+        android:textColor="#3737D3"
+        android:background="#FED9B7"/>
+    <TextView
+        android:id="@+id/flashcard_q1_choice3"
+        android:layout_below="@+id/flashcard_q1_choice2"
+        android:layout_marginTop="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Barack Obama"
+        android:textSize="40sp"
+        android:textColor="#3737D3"
+        android:background="#FED9B7"/>
 
 </RelativeLayout>
-
