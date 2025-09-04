@@ -83,12 +83,7 @@
             android:layout_height="60dp" android:id="@+id/toggle_choices_visibility"
             android:baselineAlignBottom="true"
             android:contentDescription="@string/bottom_sheet_behavior"
-            android:src="@drawable/eye_lined_off" />  <ImageView
-        android:layout_gravity="bottom" android:layout_width="60dp"
-        android:layout_height="60dp" android:id="@+id/toggle_choices_visibility2"
-        android:baselineAlignBottom="true" android:visibility="invisible"
-        android:contentDescription="@string/bottom_sheet_behavior"
-        android:src="@drawable/eye_lined" />
+            android:src="@drawable/eye_lined_off" />
     </LinearLayout>
 
 </RelativeLayout>
