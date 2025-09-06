@@ -10,12 +10,10 @@
     <Button
         android:id="@+id/button1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+       android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/main"
         android:layout_alignParentLeft="true"
-        android:layout_marginBottom="5dp"
-        android:layout_marginRight="10dp"
-        android:text="Flash Card App"
+        android:text="Flash Card App" android:background="#030870"
         android:textColor="#ffffff"
         android:textSize="20sp"/>
 <!---This part of code is for the question. -->
@@ -24,7 +22,7 @@
         android:layout_below="@+id/button1"
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:gravity="center"
+        android:gravity="center" android:layout_margin="5dp"
         android:text="Who is the 44th President of the United States?"
         android:textSize="40sp"
         android:textColor="#4C4D4F"
@@ -83,7 +81,12 @@
             android:layout_height="64dp" android:id="@+id/toggle_choices_visibility"
             android:baselineAlignBottom="true"
             android:contentDescription="@string/bottom_sheet_behavior"
-            android:src="@drawable/eye_lined_off" />
+            android:src="@drawable/eye_lined_off" /> <ImageView
+        android:layout_gravity="bottom" android:layout_width="64dp"
+        android:layout_height="64dp" android:id="@+id/toggle_choices_visibility2" android:visibility="invisible"
+        android:baselineAlignBottom="true"
+        android:contentDescription="@string/bottom_sheet_behavior"
+        android:src="@drawable/eye_lined" />
     </LinearLayout>
 
 </RelativeLayout>
