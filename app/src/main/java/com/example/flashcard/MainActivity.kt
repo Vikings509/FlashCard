@@ -10,12 +10,16 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import android.R.transition.fade
+import android.graphics.Color
 import android.view.animation.AlphaAnimation
 import android.view.animation.Animation
 import kotlin.time.toDuration
 
 class MainActivity : AppCompatActivity() {
     private var isOn = false
+    private var rp1 = false
+    private var rp2 = false
+    private var rp3 = false
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -27,19 +31,57 @@ class MainActivity : AppCompatActivity() {
         // Get the question and answer text views
         val flashcardQuestion = findViewById<TextView>(R.id.flashcard_question1)
         val flashcardAnswer = findViewById<TextView>(R.id.flashcard_answer1)
-            flashcardQuestion.setOnClickListener {
-                flashcardQuestion.visibility = View.INVISIBLE
-                flashcardAnswer.visibility = View.VISIBLE
-            }
+        flashcardQuestion.setOnClickListener {
+            flashcardQuestion.visibility = View.INVISIBLE
+            flashcardAnswer.visibility = View.VISIBLE
+        }
         flashcardAnswer.setOnClickListener {
             flashcardQuestion.visibility = View.VISIBLE
             flashcardAnswer.visibility = View.INVISIBLE
         }
-            // Set values
-            val isShowingAnswers = findViewById<ImageView>(R.id.toggle_choices_visibility)
-            val flashcardChoice1 = findViewById<TextView>(R.id.flashcard_q1_choice1)
-            val flashcardChoice2 = findViewById<TextView>(R.id.flashcard_q1_choice2)
-            val flashcardChoice3 = findViewById<TextView>(R.id.flashcard_q1_choice3)
+        // Set values
+        val isShowingAnswers = findViewById<ImageView>(R.id.toggle_choices_visibility)
+        val flashcardChoice1 = findViewById<TextView>(R.id.flashcard_q1_choice1)
+        val flashcardChoice2 = findViewById<TextView>(R.id.flashcard_q1_choice2)
+        val flashcardChoice3 = findViewById<TextView>(R.id.flashcard_q1_choice3)
+
+        // Validate the responses
+        flashcardChoice1.setOnClickListener {
+            if (rp1) {
+                flashcardChoice1.setBackgroundColor(Color.RED)
+            } else {
+                flashcardChoice1.setBackgroundColor(Color.RED)
+                flashcardChoice2.setBackgroundColor(Color.GRAY)
+                flashcardChoice3.setBackgroundColor(Color.GRAY)
+            }
+            // Active
+            rp1 = !rp1
+        }
+        flashcardChoice2.setOnClickListener {
+        if (rp2) {
+            flashcardChoice2.setBackgroundColor(Color.RED)
+            // Retour par defaut
+        } else {
+            flashcardChoice1.setBackgroundColor(Color.GRAY)
+            flashcardChoice2.setBackgroundColor(Color.RED)
+            flashcardChoice3.setBackgroundColor(Color.GRAY)
+        }
+        // Active
+        rp2 = !rp2
+    }
+        flashcardChoice3.setOnClickListener {
+    if (rp3) {
+        flashcardChoice3.setBackgroundColor(Color.GREEN)
+        // Retour par defaut
+    } else {
+        flashcardChoice3.setBackgroundColor(Color.GREEN)
+        flashcardChoice1.setBackgroundColor(Color.RED)
+        flashcardChoice2.setBackgroundColor(Color.RED)
+    }
+    // Active
+    rp3 = !rp3
+}
+
             // set initial icon
             isShowingAnswers.setOnClickListener {
                 isOn = !isOn
