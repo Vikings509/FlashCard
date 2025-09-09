@@ -34,10 +34,36 @@ class MainActivity : AppCompatActivity() {
         flashcardQuestion.setOnClickListener {
             flashcardQuestion.visibility = View.INVISIBLE
             flashcardAnswer.visibility = View.VISIBLE
+
+            // Animation rotation
+            val rotate = RotateAnimation(
+                0f, 360f,
+                Animation.RELATIVE_TO_SELF, 0.5f,
+                Animation.RELATIVE_TO_SELF, 0.5f
+            )
+            flashcardQuestion.startAnimation(rotate)
+            AlphaAnimation(0f,1f)
+
+            rotate.duration = 150
+            flashcardQuestion.startAnimation(rotate)
+            AlphaAnimation(0f,1f)
+
         }
         flashcardAnswer.setOnClickListener {
             flashcardQuestion.visibility = View.VISIBLE
             flashcardAnswer.visibility = View.INVISIBLE
+            // Animation rotation
+            val rotate = RotateAnimation(
+                0f, 360f,
+                Animation.RELATIVE_TO_SELF, 0.5f,
+                Animation.RELATIVE_TO_SELF, 0.5f
+            )
+            flashcardAnswer.startAnimation(rotate)
+            AlphaAnimation(0f,1f)
+            rotate.duration = 150
+            flashcardAnswer.startAnimation(rotate)
+            AlphaAnimation(0f,1f)
+
         }
         // Set values
         val isShowingAnswers = findViewById<ImageView>(R.id.toggle_choices_visibility)
@@ -51,8 +77,9 @@ class MainActivity : AppCompatActivity() {
                 flashcardChoice1.setBackgroundColor(Color.RED)
             } else {
                 flashcardChoice1.setBackgroundColor(Color.RED)
-                flashcardChoice2.setBackgroundColor(Color.GRAY)
-                flashcardChoice3.setBackgroundColor(Color.GRAY)
+                flashcardChoice2.setBackgroundColor(Color.YELLOW)
+                flashcardChoice3.setBackgroundColor(Color.GREEN)
+
             }
             // Active
             rp1 = !rp1
@@ -62,9 +89,9 @@ class MainActivity : AppCompatActivity() {
             flashcardChoice2.setBackgroundColor(Color.RED)
             // Retour par defaut
         } else {
-            flashcardChoice1.setBackgroundColor(Color.GRAY)
+            flashcardChoice1.setBackgroundColor(Color.YELLOW)
             flashcardChoice2.setBackgroundColor(Color.RED)
-            flashcardChoice3.setBackgroundColor(Color.GRAY)
+            flashcardChoice3.setBackgroundColor(Color.GREEN)
         }
         // Active
         rp2 = !rp2

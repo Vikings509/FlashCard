@@ -39,6 +39,7 @@
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:gravity="center"
+        android:layout_below="@id/toolbar"
         android:text="Barack Obama"
         android:textSize="40sp"
         android:textColor="#4C4D4F"
