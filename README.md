@@ -8,7 +8,7 @@ This is a Flash Card
 
 ### App Walk-though
 
-<img src="https://github.com/Vikings509/FlashCard/blob/main/FlashCard1.gif" width=200><br>
+<img src="Screen_recording_20250907_132513.gif" width=200><br>
 
 ## Required
 - [x] Create New Project in Android Studio
