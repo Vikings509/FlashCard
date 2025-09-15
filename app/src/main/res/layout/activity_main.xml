@@ -82,12 +82,19 @@
     <ImageView
         android:id="@+id/toggle_choices_visibility"
         android:layout_width="64dp"
-        android:layout_height="64dp"
-        android:layout_below="@id/flashcard_q1_choice3"
+        android:layout_height="64dp" android:layout_alignParentBottom="true" android:layout_marginBottom="100dp"
         android:layout_centerInParent="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="-150dp" android:clickable="true"
-        android:focusable="true" android:contentDescription="Toggle Button"
+        android:layout_marginTop="-150dp" android:clickable="true"
+        android:contentDescription="Toggle Button"
         android:src="@drawable/eye_lined_off" />
+
+    <ImageView
+        android:id="@+id/plus_button"
+        android:layout_width="50dp"
+        android:layout_height="50dp" android:clickable="true"
+        android:src="@drawable/plus_square_on" android:layout_margin="30dp"
+        android:layout_alignParentBottom="true" android:layout_alignParentRight="true">
+    </ImageView>
+
 
 </RelativeLayout>

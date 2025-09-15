@@ -1,7 +1,11 @@
 package com.example.flashcard
 
+import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.view.View
+import android.view.animation.AlphaAnimation
+import android.view.animation.Animation
 import android.view.animation.RotateAnimation
 import android.widget.ImageView
 import android.widget.TextView
@@ -9,11 +13,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import android.R.transition.fade
-import android.graphics.Color
-import android.view.animation.AlphaAnimation
-import android.view.animation.Animation
-import kotlin.time.toDuration
+
 
 class MainActivity : AppCompatActivity() {
     private var isOn = false
@@ -42,11 +42,11 @@ class MainActivity : AppCompatActivity() {
                 Animation.RELATIVE_TO_SELF, 0.5f
             )
             flashcardQuestion.startAnimation(rotate)
-            AlphaAnimation(0f,1f)
+            AlphaAnimation(0f, 1f)
 
             rotate.duration = 150
             flashcardQuestion.startAnimation(rotate)
-            AlphaAnimation(0f,1f)
+            AlphaAnimation(0f, 1f)
 
         }
         flashcardAnswer.setOnClickListener {
@@ -59,10 +59,10 @@ class MainActivity : AppCompatActivity() {
                 Animation.RELATIVE_TO_SELF, 0.5f
             )
             flashcardAnswer.startAnimation(rotate)
-            AlphaAnimation(0f,1f)
+            AlphaAnimation(0f, 1f)
             rotate.duration = 150
             flashcardAnswer.startAnimation(rotate)
-            AlphaAnimation(0f,1f)
+            AlphaAnimation(0f, 1f)
 
         }
         // Set values
@@ -85,62 +85,76 @@ class MainActivity : AppCompatActivity() {
             rp1 = !rp1
         }
         flashcardChoice2.setOnClickListener {
-        if (rp2) {
-            flashcardChoice2.setBackgroundColor(Color.RED)
-            // Retour par defaut
-        } else {
-            flashcardChoice1.setBackgroundColor(Color.YELLOW)
-            flashcardChoice2.setBackgroundColor(Color.RED)
-            flashcardChoice3.setBackgroundColor(Color.GREEN)
+            if (rp2) {
+                flashcardChoice2.setBackgroundColor(Color.RED)
+                // Retour par defaut
+            } else {
+                flashcardChoice1.setBackgroundColor(Color.YELLOW)
+                flashcardChoice2.setBackgroundColor(Color.RED)
+                flashcardChoice3.setBackgroundColor(Color.GREEN)
+            }
+            // Active
+            rp2 = !rp2
         }
-        // Active
-        rp2 = !rp2
-    }
         flashcardChoice3.setOnClickListener {
-    if (rp3) {
-        flashcardChoice3.setBackgroundColor(Color.GREEN)
-        // Retour par defaut
-    } else {
-        flashcardChoice3.setBackgroundColor(Color.GREEN)
-        flashcardChoice1.setBackgroundColor(Color.RED)
-        flashcardChoice2.setBackgroundColor(Color.RED)
-    }
-    // Active
-    rp3 = !rp3
-}
+            if (rp3) {
+                flashcardChoice3.setBackgroundColor(Color.GREEN)
+                // Retour par defaut
+            } else {
+                flashcardChoice3.setBackgroundColor(Color.GREEN)
+                flashcardChoice1.setBackgroundColor(Color.RED)
+                flashcardChoice2.setBackgroundColor(Color.RED)
+            }
+            // Active
+            rp3 = !rp3
+        }
 
-            // set initial icon
-            isShowingAnswers.setOnClickListener {
-                isOn = !isOn
+        // set initial icon
+        isShowingAnswers.setOnClickListener {
+            isOn = !isOn
 
-                // Animation rotation
-                val rotate = RotateAnimation(
-                    0f, 360f,
-                    Animation.RELATIVE_TO_SELF, 0.5f,
-                    Animation.RELATIVE_TO_SELF, 0.5f
-                )
-                rotate.duration = 300
-                isShowingAnswers.startAnimation(rotate)
-                AlphaAnimation(0f,1f)
+            // Animation rotation
+            val rotate = RotateAnimation(
+                0f, 360f,
+                Animation.RELATIVE_TO_SELF, 0.5f,
+                Animation.RELATIVE_TO_SELF, 0.5f
+            )
+            rotate.duration = 300
+            isShowingAnswers.startAnimation(rotate)
+            AlphaAnimation(0f, 1f)
 
-                 // Changer l'icone
-                if (isOn){
-                    isShowingAnswers.setImageResource(R.drawable.eye_lined)
-                    flashcardChoice1.visibility = View.INVISIBLE
-                    flashcardChoice2.visibility=View.INVISIBLE
-                    flashcardChoice3.visibility= View.INVISIBLE
+            // Changer l'icone
+            if (isOn) {
+                isShowingAnswers.setImageResource(R.drawable.eye_lined)
+                flashcardChoice1.visibility = View.INVISIBLE
+                flashcardChoice2.visibility = View.INVISIBLE
+                flashcardChoice3.visibility = View.INVISIBLE
+            } else {
+                isShowingAnswers.setImageResource(R.drawable.eye_lined_off)
+                flashcardChoice1.visibility = View.VISIBLE
+                flashcardChoice2.visibility = View.VISIBLE
+                flashcardChoice3.visibility = View.VISIBLE
+
+                //Set value
+                val button_add = findViewById<ImageView>(R.id.plus_button)
+                button_add.setOnClickListener {
+                    val intent = Intent(this, AddQuestion::class.java)
+                    startActivity(intent)
                 }
-                    else {
-                    isShowingAnswers.setImageResource(R.drawable.eye_lined_off)
-                    flashcardChoice1.visibility = View.VISIBLE
-                    flashcardChoice2.visibility=View.VISIBLE
-                    flashcardChoice3.visibility= View.VISIBLE
-                            }
-            ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-                val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-                v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-                insets
+
+
+                ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+                    val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+                    v.setPadding(
+                        systemBars.left,
+                        systemBars.top,
+                        systemBars.right,
+                        systemBars.bottom
+                    )
+                    insets
+                }
             }
         }
     }
+
 }
