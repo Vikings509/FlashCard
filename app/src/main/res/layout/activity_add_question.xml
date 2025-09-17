@@ -10,11 +10,18 @@
     tools:context=".AddQuestion">
 
 <EditText
-android:id="@+id/editTextField"
+android:id="@+id/editTextField_question"
 android:layout_width="match_parent"
 android:layout_height="70dp"
 android:layout_margin="20dp"
-android:hint="This is some hint text!" />
+android:hint="Enter The Question Here" />
+    <EditText
+        android:id="@+id/editTextField_answer"
+        android:layout_below="@+id/editTextField_question"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_margin="20dp"
+        android:hint="Enter The Answer Here" />
 
     <ImageView
         android:id="@+id/button_close"

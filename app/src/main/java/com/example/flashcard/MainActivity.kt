@@ -13,6 +13,8 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.activity.result.contract.ActivityResultContracts
+
 
 
 class MainActivity : AppCompatActivity() {
@@ -135,11 +137,29 @@ class MainActivity : AppCompatActivity() {
                 flashcardChoice2.visibility = View.VISIBLE
                 flashcardChoice3.visibility = View.VISIBLE
 
-                //Set value
-                val button_add = findViewById<ImageView>(R.id.plus_button)
-                button_add.setOnClickListener {
+                }
+        }
+
+        val button_add = findViewById<ImageView>(R.id.plus_button)
+            /*button_add.setOnClickListener {
+                 val intent = Intent(this, AddQuestion::class.java)
+                 startActivity(intent)*/
+
+               val resultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+
+                    // This code is executed in StartingActivity after we come back from EndingActivity
+
+                    // This extracts any data that was passed back from EndingActivity
+                    val data: Intent? = result.data
+                    // ToDo: Execute more code here
+
+                }
+        
+            button_add.setOnClickListener {
                     val intent = Intent(this, AddQuestion::class.java)
-                    startActivity(intent)
+                    // Launch EndingActivity with the resultLauncher so we can execute more code
+                    // once we come back here from EndingActivity
+                    resultLauncher.launch(intent)
                 }
 
 
@@ -155,6 +175,5 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
-    }
 
-}
+
