@@ -20,27 +20,25 @@ class AddQuestion : AppCompatActivity() {
         button_close.setOnClickListener {
             finish()
         }
-      /*  val button_add = findViewById<ImageView>(R.id.button_close)
-        button_add.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
+
+        val button_save = findViewById<ImageView>(R.id.button_save)
+        button_save.setOnClickListener {
+            val data = Intent() // create a new Intent, this is where we will put our data
+
+            data.putExtra(
+                "editTextField_question",
+                "some string"
+            ) // puts one string into the Intent, with the key as 'string1'
+
+            data.putExtra(
+                "editTextField_answer",
+                "another string"
+            ) // puts another string into the Intent, with the key as 'string2
+
+            setResult(RESULT_OK, data) // set result code and bundle data for response
+
+            finish() // closes this activity and pass data to the original activity that launched this activity*/
         }
-
-        val data = Intent() // create a new Intent, this is where we will put our data
-
-        data.putExtra(
-            "string1",
-            "some string"
-        ) // puts one string into the Intent, with the key as 'string1'
-
-        data.putExtra(
-            "string2",
-            "another string"
-        ) // puts another string into the Intent, with the key as 'string2
-
-        setResult(RESULT_OK, data) // set result code and bundle data for response
-
-        finish() // closes this activity and pass data to the original activity that launched this activity*/
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())

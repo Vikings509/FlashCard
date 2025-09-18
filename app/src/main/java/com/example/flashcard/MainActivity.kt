@@ -14,6 +14,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.activity.result.contract.ActivityResultContracts
+import android.util.Log
+
 
 
 
@@ -145,6 +147,20 @@ class MainActivity : AppCompatActivity() {
                  val intent = Intent(this, AddQuestion::class.java)
                  startActivity(intent)*/
 
+        val resultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            val data: Intent? = result.data
+            if (data != null) { // Check that we have data returned
+                val string1 = data.getStringExtra("editTextField_question") // 'string1' needs to match the key we used when we put the string in the Intent
+                val string2 = data.getStringExtra("editTextField_answer")
+
+                // Log the value of the strings for easier debugging
+                Log.i("MainActivity", "editTextField_question: $string1")
+                Log.i("MainActivity", "editTextField_answer: $string2")
+            } else {
+                Log.i("MainActivity", "Returned null data from AddCardActivity")
+            }
+        }
+/*
                val resultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
 
                     // This code is executed in StartingActivity after we come back from EndingActivity
@@ -153,7 +169,7 @@ class MainActivity : AppCompatActivity() {
                     val data: Intent? = result.data
                     // ToDo: Execute more code here
 
-                }
+                }*/
         
             button_add.setOnClickListener {
                     val intent = Intent(this, AddQuestion::class.java)
