@@ -8,6 +8,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.google.android.material.snackbar.Snackbar
 
 class AddQuestion : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,13 +31,22 @@ class AddQuestion : AppCompatActivity() {
             val question = editTextQuestion.text.toString().trim()
             val answer = editTextAnswer.text.toString().trim()
 
-            val data = Intent().apply {
-                putExtra("editTextField_question", question)
-                putExtra("editTextField_answer", answer)
-            }
+            if (question.isEmpty() || answer.isEmpty()) {
+                //  Snackbar si un champ est vide
+                Snackbar.make(
+                    findViewById(R.id.main),
+                    "Veuillez remplir la question et la réponse",
+                    Snackbar.LENGTH_SHORT
+                ).show()
+            } else {
+                val data = Intent().apply {
+                    putExtra("editTextField_question", question)
+                    putExtra("editTextField_answer", answer)
+                }
 
-            setResult(RESULT_OK, data)
-            finish()
+                setResult(RESULT_OK, data)
+                finish()
+            }
         }
 
         // Insets automatiques

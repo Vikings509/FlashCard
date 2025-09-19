@@ -16,6 +16,7 @@ import androidx.core.graphics.drawable.DrawableCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import android.util.Log
+import com.google.android.material.snackbar.Snackbar
 
 class MainActivity : AppCompatActivity() {
 
@@ -95,7 +96,7 @@ class MainActivity : AppCompatActivity() {
         // --- Ajouter une question ---
         val buttonAdd = findViewById<ImageView>(R.id.plus_button)
 
-        // ✅ Nouveau launcher pour récupérer les données
+        // Nouveau launcher pour récupérer les données
         val resultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
             if (result.resultCode == RESULT_OK) {
                 val data: Intent? = result.data
@@ -105,9 +106,16 @@ class MainActivity : AppCompatActivity() {
                 Log.i("MainActivity", "Question: $string1")
                 Log.i("MainActivity", "Réponse: $string2")
 
-                // ✅ Afficher les nouvelles valeurs dans la flashcard
+                // Afficher dans les TextView
                 flashcardQuestion.text = string1
                 flashcardAnswer.text = string2
+
+                // Afficher le Snackbar après retour
+                Snackbar.make(
+                    findViewById(R.id.flashcard_question1),
+                    "Nouvelle carte ajoutée !",
+                    Snackbar.LENGTH_SHORT
+                ).show()
             } else {
                 Log.w("MainActivity", "Résultat annulé ou vide")
             }
