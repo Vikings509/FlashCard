@@ -99,8 +99,8 @@ class MainActivity : AppCompatActivity() {
         val resultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
             if (result.resultCode == RESULT_OK) {
                 val data: Intent? = result.data
-                val string1 = data?.getStringExtra("editTextField_question") ?: "Question?"
-                val string2 = data?.getStringExtra("editTextField_answer") ?: "Réponse"
+                val string1 = data?.getStringExtra("editText_question") ?: "Question?"
+                val string2 = data?.getStringExtra("editText_answer") ?: "Réponse"
 
                 Log.i("MainActivity", "Question: $string1")
                 Log.i("MainActivity", "Réponse: $string2")
