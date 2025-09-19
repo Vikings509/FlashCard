@@ -2,45 +2,44 @@ package com.example.flashcard
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.EditText
 import android.widget.ImageView
 import androidx.activity.enableEdgeToEdge
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-
 
 class AddQuestion : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_add_question)
-        val button_close = findViewById<ImageView>(R.id.button_close)
-        // Set title to FlashCard App
-        //supportActionBar?.title = "Add Question"
-        button_close.setOnClickListener {
+
+        val buttonClose = findViewById<ImageView>(R.id.button_close)
+        val buttonSave = findViewById<ImageView>(R.id.button_save)
+        val editTextQuestion = findViewById<EditText>(R.id.editText_question)
+        val editTextAnswer = findViewById<EditText>(R.id.editText_answer)
+
+        // Fermer sans sauvegarder
+        buttonClose.setOnClickListener {
             finish()
         }
 
-        val button_save = findViewById<ImageView>(R.id.button_save)
-        button_save.setOnClickListener {
-            val data = Intent() // create a new Intent, this is where we will put our data
+        // Sauvegarder et renvoyer les données
+        buttonSave.setOnClickListener {
+            val question = editTextQuestion.text.toString().trim()
+            val answer = editTextAnswer.text.toString().trim()
 
-            data.putExtra(
-                "editTextField_question",
-                "some string"
-            ) // puts one string into the Intent, with the key as 'string1'
+            val data = Intent().apply {
+                putExtra("editTextField_question", question)
+                putExtra("editTextField_answer", answer)
+            }
 
-            data.putExtra(
-                "editTextField_answer",
-                "another string"
-            ) // puts another string into the Intent, with the key as 'string2
-
-            setResult(RESULT_OK, data) // set result code and bundle data for response
-
-            finish() // closes this activity and pass data to the original activity that launched this activity*/
+            setResult(RESULT_OK, data)
+            finish()
         }
 
+        // Insets automatiques
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)

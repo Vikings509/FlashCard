@@ -8,7 +8,7 @@
 
     <!-- Champ Question -->
     <EditText
-        android:id="@+id/editTextField_question"
+        android:id="@+id/editText_question"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Entrez la question"
@@ -19,12 +19,12 @@
 
     <!-- Champ Réponse -->
     <EditText
-        android:id="@+id/editTextField_answer"
+        android:id="@+id/editText_answer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Entrez la réponse"
         android:textColor="@color/black"
-        android:layout_below="@id/editTextField_question"
+        android:layout_below="@id/editText_question"
         android:layout_marginTop="16dp"
         android:padding="12dp" />
 

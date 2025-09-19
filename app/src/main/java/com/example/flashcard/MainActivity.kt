@@ -12,10 +12,10 @@ import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.core.graphics.drawable.DrawableCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import android.util.Log
-import androidx.core.graphics.drawable.DrawableCompat
 
 class MainActivity : AppCompatActivity() {
 
@@ -95,19 +95,21 @@ class MainActivity : AppCompatActivity() {
         // --- Ajouter une question ---
         val buttonAdd = findViewById<ImageView>(R.id.plus_button)
 
+        // ✅ Nouveau launcher pour récupérer les données
         val resultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-            val data: Intent? = result.data
-            if (data != null) {
-                val string1 = data.getStringExtra("editTextField_question") ?: "Question?"
-                val string2 = data.getStringExtra("editTextField_answer") ?: "Réponse"
+            if (result.resultCode == RESULT_OK) {
+                val data: Intent? = result.data
+                val string1 = data?.getStringExtra("editTextField_question") ?: "Question?"
+                val string2 = data?.getStringExtra("editTextField_answer") ?: "Réponse"
 
-                Log.i("MainActivity", "editTextField_question: $string1")
-                Log.i("MainActivity", "editTextField_answer: $string2")
+                Log.i("MainActivity", "Question: $string1")
+                Log.i("MainActivity", "Réponse: $string2")
 
+                // ✅ Afficher les nouvelles valeurs dans la flashcard
                 flashcardQuestion.text = string1
                 flashcardAnswer.text = string2
             } else {
-                Log.i("MainActivity", "Returned null data from AddQuestion")
+                Log.w("MainActivity", "Résultat annulé ou vide")
             }
         }
 
