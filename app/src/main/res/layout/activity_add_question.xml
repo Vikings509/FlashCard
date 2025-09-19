@@ -1,43 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ffffff"
-    tools:context=".AddQuestion">
+    android:background="#44A5C3"
+    android:padding="16dp">
 
-<EditText
-android:id="@+id/editTextField_question"
-android:layout_width="match_parent"
-android:layout_height="70dp"
-android:layout_margin="20dp"
-android:hint="Enter The Question Here" />
+    <!-- Champ Question -->
+    <EditText
+        android:id="@+id/editTextField_question"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Entrez la question"
+        android:layout_alignParentTop="true"
+        android:textColor="@color/black"
+        android:layout_marginTop="24dp"
+        android:padding="12dp" />
+
+    <!-- Champ Réponse -->
     <EditText
         android:id="@+id/editTextField_answer"
-        android:layout_below="@+id/editTextField_question"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:layout_margin="20dp"
-        android:hint="Enter The Answer Here" />
+        android:layout_height="wrap_content"
+        android:hint="Entrez la réponse"
+        android:textColor="@color/black"
+        android:layout_below="@id/editTextField_question"
+        android:layout_marginTop="16dp"
+        android:padding="12dp" />
 
-    <ImageView
-        android:id="@+id/button_close"
-        android:layout_width="50dp"
-        android:layout_height="50dp" android:clickable="true"
-        android:src="@drawable/button_close_foreground" android:layout_margin="30dp"
-        android:layout_alignParentBottom="true" android:layout_alignParentRight="true">
-    </ImageView>
-
+    <!-- Bouton Enregistrer -->
     <ImageView
         android:id="@+id/button_save"
-        android:layout_width="50dp"
-        android:layout_height="50dp" android:clickable="true"
-        android:src="@drawable/button_save_foreground" android:layout_margin="30dp"
-        android:layout_alignParentBottom="true" android:layout_alignParentLeft="true">
-    </ImageView>
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:src="@drawable/button_save_foreground"
+        android:contentDescription="Enregistrer"
+        android:layout_marginTop="32dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true" />
 
+    <!-- Bouton Fermer -->
+    <ImageView
+        android:id="@+id/button_close"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:src="@drawable/button_close_foreground"
+        android:contentDescription="Fermer"
+        android:layout_alignBaseline="@id/button_save"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true" />
 
 </RelativeLayout>
